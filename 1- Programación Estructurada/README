@@ -1,0 +1,23 @@
+# Papelería Arcoíris - Versión Estructurada
+---
+
+## Descripción
+Este es el primer proyecto de la serie "Evolución de una Papelería". Representa mi introducción a la programación en Python, utilizando programación estructurada/procedural.
+
+El programa simula un sistema básico de ventas para una papelería, donde un cliente puede ver productos, agregarlos a un carrito y realizar una compra.
+---
+
+## Características
+ - Ver catálogo de productos 
+ - Agregar productos al carrito
+ - Ver carrito de compras 
+ - Calcular total a pagar 
+ - Validar stock disponible
+ - Menú interactivo 
+---
+
+## 🛠️ Requisitos
+- Python 3.x instalado
+- Sin dependencias externas (usa librerías estándar)
+---
+

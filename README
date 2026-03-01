@@ -1,0 +1,25 @@
+# 🐍 Proyectos en Python - Evolución de una Papelería
+---
+
+## Descripción
+Este repositorio documenta **mi aprendizaje y evolución en Python** a través del desarrollo de un mismo sistema: una **Papelería**. 
+
+La idea central es mostrar cómo un mismo problema puede resolverse de diferentes maneras, aplicando distintos **paradigmas de programación** y aumentando gradualmente la complejidad técnica.
+
+Cada proyecto toma como base el anterior, agregando nuevas funcionalidades, mejores prácticas y tecnologías más avanzadas.
+---
+
+## Objetivo
+Demostrar el progreso en el desarrollo de software mediante:
+- **Diferentes paradigmas** (Estructurado, Orientado a Objetos, APIs)
+- **Arquitecturas escalables** (De consola a servicios web)
+- **Buenas prácticas** (Validaciones, manejo de errores, organización de código)
+- **Persistencia de datos** (De memoria a SQLite)
+---
+
+## Requisitos
+Para ejecutar los proyectos necesitas:
+- Python 3.10.11 instalado
+- SQLite3 (viene incluido con Python)
+- Flask (solo para el proyecto de APIs): `pip install flask`
+---

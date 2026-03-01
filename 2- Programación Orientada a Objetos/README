@@ -1,0 +1,69 @@
+# Papelería Arcoíris - Versión Orientada a Objetos
+---
+
+## Descripción
+Este es el segundo proyecto de la serie "Evolución de una Papelería". Representa la evolución del sistema básico hacia una arquitectura más robusta utilizando Programación Orientada a Objetos (POO) y base de datos SQLite.
+
+El programa ahora cuenta con persistencia de datos, roles de usuario diferenciados (Administrador y Cliente), carrito de compras funcional y registro completo de ventas.
+---
+
+
+
+## Características
+ - Ver catálogo de productos 
+ - Agregar productos al carrito 
+ - Ver carrito de compras 
+ - Calcular total con IVA 
+ - Validar stock disponible 
+ - Menú interactivo por roles 
+ - Persistencia de datos
+ - Registro de ventas
+ - Descuento automático de stock
+ - Agregar/Eliminar productos
+ - Ticket de compra
+---
+
+
+### 📦 Clases del Sistema
+|       Clase       |              Responsabilidad          |       Atributos Principales        |
+|-------------------|---------------------------------------|------------------------------------|
+|      Producto     | Representa un artículo del inventario |  `id`, `nombre`, `precio`, `stock` |
+|     ItemCarrito   |  Representa un producto en el carrito | `producto`, `cantidad`, `subtotal` |
+|      Carrito      |        Maneja la compra temporal      |    `items[]`, métodos de cálculo   |
+| SistemaPapeleria  |       Controla toda la aplicación     | `conn`, `cursor`, `carrito`, menús |
+--------------------------------------------------------------------------------------------------
+
+## Base de Datos
+El sistema utiliza 3 tablas en SQLite:
+
+### 1. Tabla `productos`
+|  Columna |  Tipo   |            Descripción         |
+|----------|---------|--------------------------------|
+|   `id`   | INTEGER | Clave primaria autoincremental |
+| `nombre` |   TEXT  |    Nombre único del producto   |
+| `precio` |   REAL  |         Precio de venta        |
+|  `stock` | INTEGER |       Cantidad disponible      |
+
+### 2. Tabla `ventas`
+|      Columna     |    Tipo   |         Descripción            |
+|------------------|-----------|--------------------------------|
+|        `id`      |  INTEGER  | Clave primaria autoincremental |
+| `cliente_nombre` |    TEXT   |       Nombre del cliente       |
+|      `fecha`     | TIMESTAMP |     Fecha y hora de la venta   |
+|      `total`     |    REAL   |    Total de la venta con IVA   |
+
+### 3. Tabla `detalle_venta`
+|    Columna    |   Tipo  |           Descripción          |
+|---------------|---------|--------------------------------|
+|      `id`     | INTEGER | Clave primaria autoincremental |
+|   `venta_id`  | INTEGER |        FK → ventas(id)         |
+| `producto_id` | INTEGER |        FK → productos(id)      |
+|   `cantidad`  | INTEGER |        Cantidad vendida        |
+|   `subtotal`  |   REAL  |        Subtotal del item       |
+---
+
+## Requisitos
+- Python 3.x instalado
+- SQLite3 (viene incluido con Python)
+- Sin dependencias externas
+---
