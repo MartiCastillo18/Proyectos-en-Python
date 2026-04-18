@@ -1,0 +1,87 @@
+# Papelería Arcoíris - API REST con Flask
+
+## Descripción
+
+Este es el tercer proyecto de la serie "Evolución de una Papelería". Representa la evolución del sistema hacia una arquitectura moderna basada en **APIs REST** utilizando Flask y SQLite.
+
+El sistema ahora permite la gestión de inventario desde cualquier cliente HTTP (navegador, móvil, otra aplicación), siguiendo principios de desarrollo backend profesional.
+---
+
+## Características
+
+- CRUD completo de productos (Crear, Leer, Actualizar, Eliminar)
+- Actualización parcial con método PATCH
+- Sistema de movimientos de stock (entradas/salidas)
+- Validación de datos en cada petición
+- Base de datos SQLite con persistencia
+- Códigos de estado HTTP apropiados (200, 201, 400, 404, 500)
+- Respuestas en formato JSON
+- Datos iniciales precargados (10 productos)
+- Arquitectura separada (app, storage, validators, config)
+---
+
+## Estructura del Proyecto
+├── app.py # Rutas y endpoints (Flask)
+├── storage.py # Operaciones de base de datos (SQLite)
+├── validators.py # Validaciones de datos
+├── config.py # Configuración general
+---
+
+## Endpoints de la API
+
+### **Productos**
+
+|  Método  |         Ruta         |         Descripción          | Body Requerido |
+|----------|----------------------|------------------------------|---------------------------------|
+|  `GET`   |   `/api/productos`   |  Listar todos los productos  |               No                |
+|  `GET`   | `/api/productos/:id` |    Obtener producto por ID   |               No                |
+|  `POST`  |   `/api/productos`   |     Crear nuevo producto     | `{"nombre", "precio", "stock"}` |
+|  `PUT`   | `/api/productos/:id` | Actualizar producto completo | `{"nombre", "precio", "stock"}` |
+| `PATCH`  | `/api/productos/:id` |    Actualizar parcialmente   |       Campos a actualizar       |
+| `DELETE` | `/api/productos/:id` |       Eliminar producto      |               No                |
+
+### **Movimientos de Stock**
+
+| Método |        Ruta        |          Descripción         |                   Body Requerido                |
+|--------|--------------------|------------------------------|-------------------------------------------------|
+|  `GET` | `/api/movimientos` | Ver historial de movimientos |                      No                         |
+| `POST` | `/api/movimientos` |   Registrar entrada/salida   | `{"producto_id", "tipo", "cantidad", "motivo"}` |
+
+---
+
+## Base de Datos
+El sistema utiliza 2 tablas en SQLite:
+
+### 1. Tabla `productos`
+
+|  Columna |   Tipo  |             Descripción           |
+|----------|---------|-----------------------------------|
+|   `id`   | INTEGER |   Clave primaria autoincremental  |
+| `nombre` |   TEXT  |      Nombre único del producto    |
+| `precio` |   REAL  |           Precio de venta         |
+|  `stock` | INTEGER | Cantidad disponible en inventario |
+
+### **2. Tabla `movimientos`**
+
+|    Columna    |    Tipo   |                  Descripción               |
+|---------------|-----------|--------------------------------------------|
+|      `id`     |  INTEGER  |        Clave primaria autoincremental      |
+| `producto_id` |  INTEGER  |              FK → productos(id)            |
+|    `tipo`     |    TEXT   |              'entrada' o 'salida'          |
+|   `cantidad`  |  INTEGER  |            Cantidad del movimiento         |
+|     `fecha`   | TIMESTAMP |             Fecha y hora automática        |
+|    `motivo`   |    TEXT   | Razón del movimiento (venta, ajuste, etc.) |
+
+---
+
+## Requisitos
+- Python 3.x instalado
+- pip (gestor de paquetes de Python)
+- Flask (`pip install flask`)
+- Requests (`pip install requests`)
+- SQLite3 (viene incluido con Python)
+---
+
+## Ejercución
+py app.py
+
